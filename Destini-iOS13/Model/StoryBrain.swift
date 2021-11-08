@@ -10,6 +10,7 @@ import Foundation
 
 
 struct StoryBrain {
+    
     var quetionCounter = 0
     
     let x = [
@@ -49,6 +50,15 @@ struct StoryBrain {
     
     func getCurrentChoice2() -> String{
         return x[quetionCounter].choice2
+    }
+    
+    mutating func findPath(_ buttonName: String){
+        if buttonName == x[quetionCounter].choice1 {
+            quetionCounter = x[quetionCounter].choice1Destination
+        } else {
+            quetionCounter = x[quetionCounter].choice2Destination
+        }
+        print(quetionCounter)
     }
 
 }

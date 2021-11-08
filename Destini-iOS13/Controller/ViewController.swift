@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var choice1Button: UIButton!
     @IBOutlet weak var choice2Button: UIButton!
     
-    let storyBrain = StoryBrain()
+    var storyBrain = StoryBrain()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,14 +24,17 @@ class ViewController: UIViewController {
 
     @IBAction func ChoicePath(_ sender: UIButton) {
         if let name = sender.titleLabel?.text {
-            print(name)
+            storyBrain.findPath(name)
         }
+        updateLable()
+       
     }
     
     func updateLable(){
         storyLabel.text = storyBrain.getCurrentStory()
-        choice1Button.setTitle(storyBrain.getCurrentChoice(), for: choice1Button.state)
-        choice2Button.setTitle(storyBrain.getCurrentChoice2(), for: choice2Button.state)
+        choice1Button.setTitle(storyBrain.getCurrentChoice(), for: .normal)
+        choice2Button.setTitle(storyBrain.getCurrentChoice2(), for: .normal)
+
     }
 }
 
